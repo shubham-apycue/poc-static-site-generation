@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { toSlug, getPage, getRoomBySlug } from '@/lib/data'
+import { toSlug, getPage, getRoomBySlug, buildPageMetadata, getWebsiteConfig } from '@/lib/data'
 import { cdnUrl } from '@/lib/images'
 import { generateThemeCSS } from '@/lib/theme'
 
@@ -54,5 +54,22 @@ describe('getRoomBySlug', () => {
     const room = getRoomBySlug('superior-twin-room')
     expect(room).toBeDefined()
     expect(room?.name).toBe('Superior Twin Room')
+  })
+})
+
+describe('buildPageMetadata', () => {
+  it('builds metadata with title and description from page meta', () => {
+    const page = getPage('/')!
+    const globalMeta = getWebsiteConfig().globalMeta
+    const metadata = buildPageMetadata(page, globalMeta)
+    expect(metadata.title).toBe(page.meta.title)
+    expect(metadata.description).toBe(page.meta.description)
+  })
+
+  it('falls back to global og image when page has no ogImage', () => {
+    const page = getPage('/policies')!
+    const globalMeta = getWebsiteConfig().globalMeta
+    const metadata = buildPageMetadata(page, globalMeta)
+    expect((metadata.openGraph?.images as string[])?.[0]).toBe(globalMeta.seo.defaultOgImage)
   })
 })

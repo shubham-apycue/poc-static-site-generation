@@ -8,7 +8,7 @@ export interface HighlightStat { label: string; value: string }
 export interface NavLink { label: string; href: string }
 export interface RulesPoint { text: string; label: string; value: string }
 
-export interface SectionContent extends Record<string, unknown> {}
+export type SectionContent = Record<string, unknown>
 
 export interface SectionConfig {
   id: string
@@ -31,6 +31,7 @@ export interface PageMeta {
   twitterTitle?: string
   twitterDescription?: string
   ogDescription?: string
+  twitterImage?: string
 }
 
 export interface Page {
@@ -323,7 +324,7 @@ export function buildPageMetadata(page: Page, globalMeta: GlobalMeta): import('n
       card: (meta.twitterCard as 'summary_large_image') ?? 'summary_large_image',
       title: meta.twitterTitle ?? meta.title,
       description: meta.twitterDescription ?? meta.description,
-      images: (meta as Record<string, unknown>).twitterImage ? [(meta as Record<string, unknown>).twitterImage as string] : undefined,
+      images: meta.twitterImage ? [meta.twitterImage] : undefined,
     },
     robots: meta.robots ?? globalMeta.seo.defaultRobots,
     alternates: { canonical: meta.canonicalPath },
