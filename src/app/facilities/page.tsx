@@ -3,12 +3,12 @@ import { getPage, getHotelData, getWebsiteConfig, buildPageMetadata } from '@/li
 import SectionRenderer from '@/components/sections/SectionRenderer'
 
 export async function generateMetadata(): Promise<Metadata> {
-  const page = getPage('/')!
+  const page = getPage('/facilities')!
   return buildPageMetadata(page, getWebsiteConfig().globalMeta)
 }
 
-export default function HomePage() {
-  const page = getPage('/')!
+export default function FacilitiesPage() {
+  const page = getPage('/facilities')!
   const hotelData = getHotelData()
   return page.sections.map((section) => (
     <SectionRenderer key={section.id} section={section} hotelData={hotelData} />
