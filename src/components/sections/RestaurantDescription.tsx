@@ -3,7 +3,7 @@ import type { SectionConfig, HotelData, CarouselImage } from '@/lib/data'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import { cdnUrl } from '@/lib/images'
 
-interface RDContent { images: CarouselImage[]; paragraphs: string[]; mainHeading: string; sectionLabel: string }
+interface RDContent { images: CarouselImage[]; paragraphs: (string | { text: string })[]; mainHeading: string; sectionLabel: string }
 interface Props { section: SectionConfig; hotelData: HotelData }
 
 export default function RestaurantDescription({ section }: Props) {
@@ -15,7 +15,7 @@ export default function RestaurantDescription({ section }: Props) {
           {content.sectionLabel && <p className="text-xs uppercase tracking-widest opacity-60 mb-2">{content.sectionLabel}</p>}
           <h2 className="text-3xl font-bold mb-4">{content.mainHeading}</h2>
           {content.paragraphs?.map((p, i) => (
-            <p key={i} className="text-gray-600 leading-relaxed mb-3">{p}</p>
+            <p key={i} className="text-gray-600 leading-relaxed mb-3">{typeof p === 'string' ? p : p.text}</p>
           ))}
         </div>
         {content.images?.[0] && (
