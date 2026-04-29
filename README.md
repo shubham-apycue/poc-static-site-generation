@@ -1,0 +1,1 @@
+# poc-static-site-generation
