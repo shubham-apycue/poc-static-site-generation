@@ -5,9 +5,9 @@
  * - Runtime localStorage: `noimg=1` (works without rebuild)
  */
 export function imagesDisabled(): boolean {
-  // Default to disabling images unless explicitly enabled.
-  // This makes it easy to run performance checks without extra config.
-  if (process.env.NEXT_PUBLIC_DISABLE_IMAGES !== '0') return true
+  // Default: images enabled.
+  // Disable via env/query/localStorage when you want performance testing.
+  if (process.env.NEXT_PUBLIC_DISABLE_IMAGES === '1') return true
   if (typeof window === 'undefined') return false
 
   try {
