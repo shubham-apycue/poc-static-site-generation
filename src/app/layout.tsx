@@ -1,23 +1,9 @@
 import type { Metadata } from 'next'
-import { Work_Sans, IBM_Plex_Sans } from 'next/font/google'
 import './globals.css'
 import { getWebsiteConfig, getHotelData } from '@/lib/data'
 import { generateThemeCSS } from '@/lib/theme'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
-
-const workSans = Work_Sans({
-  subsets: ['latin'],
-  variable: '--font-serif',
-  display: 'swap',
-})
-
-const ibmPlexSans = IBM_Plex_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-sans',
-  display: 'swap',
-})
 
 export async function generateMetadata(): Promise<Metadata> {
   const config = getWebsiteConfig()
@@ -51,7 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   })
 
   return (
-    <html lang="en" className={`${workSans.variable} ${ibmPlexSans.variable}`}>
+    <html lang="en">
       <head>
         <style dangerouslySetInnerHTML={{ __html: themeCSS }} />
       </head>

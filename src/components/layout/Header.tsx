@@ -16,7 +16,10 @@ export default function Header({ config, hotel, pages }: Props) {
   return (
     <header
       className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 shadow-sm"
-      style={{ backgroundColor: 'oklch(var(--color-layoutHeaderBg, 100% 0 0))' }}
+      style={{
+        backgroundColor: 'oklch(var(--layout-header-bg, 100% 0 0))',
+        color: 'oklch(var(--layout-header-foreground, 15% 0 0))',
+      }}
     >
       <Link href="/" className="flex items-center gap-3">
         {hotel.logo?.light ? (
