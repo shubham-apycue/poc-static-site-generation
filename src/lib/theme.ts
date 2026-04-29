@@ -22,6 +22,8 @@ interface FullTheme {
   }
   icons?: Record<string, unknown>
   radius?: Record<string, Record<string, string>>
+  padding?: Record<string, ResponsiveValue>
+  shadows?: Record<string, string>
 }
 
 export type ThemeInput = FullTheme
@@ -92,6 +94,35 @@ export function generateThemeCSS(theme: ThemeInput): string {
         }
       }
     }
+  }
+
+  // Responsive padding (layout spacing)
+  if (theme.padding) {
+    const p = theme.padding
+    const sides: Array<[keyof typeof p, string]> = [
+      ['left', 'left'],
+      ['right', 'right'],
+      ['top', 'top'],
+      ['bottom', 'bottom'],
+    ]
+
+    for (const [key, cssKey] of sides) {
+      const val = p[key]
+      if (!val) continue
+      for (const bp of BREAKPOINTS) {
+        const v = val[bp]
+        if (v) lines.push(`  --padding-${cssKey}-${bp}: ${v};`)
+      }
+    }
+  }
+
+  // Shadows
+  if (theme.shadows) {
+    const s = theme.shadows
+    if (s.shadowSm) lines.push(`  --shadow-sm: ${s.shadowSm};`)
+    if (s.shadowMd) lines.push(`  --shadow-md: ${s.shadowMd};`)
+    if (s.shadowLg) lines.push(`  --shadow-lg: ${s.shadowLg};`)
+    if (s.shadowXl) lines.push(`  --shadow-xl: ${s.shadowXl};`)
   }
 
   // Icon tokens

@@ -29,7 +29,9 @@ export default function WhyBookDirectWithUs({ section, hotelData }: Props) {
               <li key={i} className="flex gap-3">
                 <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5"
                   style={{ backgroundColor: 'oklch(var(--primary,26.5% 0.081 305.68))', color: 'white' }}>
-                  <span className="material-symbols-outlined icon-sm" aria-hidden="true">{f.icon}</span>
+                  <span className="material-symbols-outlined icon-sm" aria-hidden="true">
+                    {String(f.icon || '').trim().toLowerCase()}
+                  </span>
                 </div>
                 <div>
                   <p className="font-semibold text-sm">{f.title}</p>

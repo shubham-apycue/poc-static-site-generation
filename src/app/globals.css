@@ -109,6 +109,77 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif, 'Work Sans', sans-serif);
 }
 
+/* Responsive padding helpers (matches `apycue-repo`) */
+.padding-left {
+  padding-left: var(--padding-left-mobile, 10px);
+}
+@media (width >= 48rem) {
+  .padding-left {
+    padding-left: var(--padding-left-tablet, 40px);
+  }
+}
+@media (width >= 80rem) {
+  .padding-left {
+    padding-left: var(--padding-left-desktop, 60px);
+  }
+}
+
+.padding-right {
+  padding-right: var(--padding-right-mobile, 10px);
+}
+@media (width >= 48rem) {
+  .padding-right {
+    padding-right: var(--padding-right-tablet, 40px);
+  }
+}
+@media (width >= 80rem) {
+  .padding-right {
+    padding-right: var(--padding-right-desktop, 60px);
+  }
+}
+
+.padding-top {
+  padding-top: var(--padding-top-mobile, 40px);
+}
+@media (width >= 48rem) {
+  .padding-top {
+    padding-top: var(--padding-top-tablet, 64px);
+  }
+}
+@media (width >= 80rem) {
+  .padding-top {
+    padding-top: var(--padding-top-desktop, 80px);
+  }
+}
+
+.padding-bottom {
+  padding-bottom: var(--padding-bottom-mobile, 40px);
+}
+@media (width >= 48rem) {
+  .padding-bottom {
+    padding-bottom: var(--padding-bottom-tablet, 64px);
+  }
+}
+@media (width >= 80rem) {
+  .padding-bottom {
+    padding-bottom: var(--padding-bottom-desktop, 80px);
+  }
+}
+
+/* Icon size helpers (so `icon-sm` works even without `.material-symbols-outlined.icon-sm`) */
+.icon-xl {
+  font-size: var(--icon-xl, 32px) !important;
+  line-height: 1 !important;
+}
+.icon-md {
+  font-size: var(--icon-md, 24px) !important;
+  line-height: 1 !important;
+}
+.icon-sm {
+  font-size: var(--icon-sm, 18px) !important;
+  line-height: 1 !important;
+}
+
 /* Self-hosted text fonts (copied from `apycue-repo` build output) */
 @font-face {
   font-family: 'Work Sans';

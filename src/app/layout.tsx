@@ -39,10 +39,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
+        <link
+          rel="preload"
+          as="font"
+          href="/fonts/material-symbols-outlined.woff2"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
         <style dangerouslySetInnerHTML={{ __html: themeCSS }} />
       </head>
       <body>
-        <Header config={config.header} hotel={hotelData.hotel} pages={config.pages} />
+        <Header
+          config={config.header}
+          hotel={hotelData.hotel}
+          contact={hotelData.contact}
+          pages={config.pages}
+        />
         <main>{children}</main>
         <Footer config={config.footer} hotel={hotelData.hotel} contact={hotelData.contact} pages={config.pages} />
       </body>

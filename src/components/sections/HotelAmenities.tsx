@@ -20,7 +20,9 @@ export default function HotelAmenities({ section, hotelData }: Props) {
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                 {items.map((a) => (
                   <div key={a.id} className="flex items-center gap-2 text-sm">
-                    <span className="material-symbols-outlined icon-sm" aria-hidden="true">{a.icon || 'check'}</span>
+                    <span className="material-symbols-outlined icon-sm" aria-hidden="true">
+                      {String(a.icon || 'check').trim().toLowerCase()}
+                    </span>
                     <span>{a.name}</span>
                   </div>
                 ))}

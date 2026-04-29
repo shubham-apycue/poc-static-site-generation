@@ -15,7 +15,7 @@ const bgMap: Record<string, string> = {
 export default function SectionWrapper({ children, backGroundVariant = 'default', className = '' }: Props) {
   const bg = bgMap[backGroundVariant] ?? bgMap.default
   return (
-    <section className={`py-12 px-6 ${bg} ${className}`}>
+    <section className={`padding-top padding-bottom padding-left padding-right ${bg} ${className}`}>
       <div className="max-w-6xl mx-auto">{children}</div>
     </section>
   )

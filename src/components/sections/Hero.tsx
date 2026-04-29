@@ -52,7 +52,9 @@ export default function Hero({ section, hotelData }: Props) {
           <div className="flex gap-6 px-6 py-3 min-w-max mx-auto">
             {content.trustUspItems.map((item, i) => (
               <div key={i} className="flex items-center gap-2 text-white text-sm whitespace-nowrap">
-                <span className="material-symbols-outlined icon-sm" aria-hidden="true">{item.icon}</span>
+                <span className="material-symbols-outlined icon-sm" aria-hidden="true">
+                  {String(item.icon || '').trim().toLowerCase()}
+                </span>
                 <span>{item.text}</span>
               </div>
             ))}
