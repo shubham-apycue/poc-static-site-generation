@@ -1,13 +1,12 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import type { SectionConfig, HotelData } from '@/lib/data'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import { cdnUrl } from '@/lib/images'
 import { toSlug } from '@/lib/data'
 import { useMemo, useRef } from 'react'
-import { DISABLE_IMAGES } from '@/lib/flags'
+import SmartImage from '@/components/media/SmartImage'
 
 interface RoomTypeListContent {
   mainHeading: string; sectionTitle: string
@@ -90,17 +89,15 @@ export default function RoomTypeList({ section, hotelData }: Props) {
             }}
           >
             <div className="relative aspect-[4/3] overflow-hidden radius-image">
-              {!DISABLE_IMAGES && room.images[0] ? (
-                <Image
+              {room.images[0] ? (
+                <SmartImage
                   src={cdnUrl(room.images[0])}
                   alt={room.name}
                   fill
                   className="object-cover"
                   sizes="(max-width:768px) 100vw,(max-width:1200px) 60vw, 380px"
                 />
-              ) : (
-                <div className="w-full h-full bg-gray-200" />
-              )}
+              ) : null}
             </div>
 
             <h3 className="font-semibold text-lg mt-4">{room.name}</h3>

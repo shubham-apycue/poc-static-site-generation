@@ -1,9 +1,8 @@
 import Link from 'next/link'
-import Image from 'next/image'
+import SmartImage from '@/components/media/SmartImage'
 import type { SectionConfig, HotelData } from '@/lib/data'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import { cdnUrl } from '@/lib/images'
-import { DISABLE_IMAGES } from '@/lib/flags'
 
 interface AmenitiesContent { badge: string; mainHeading: string; viewAllButtonHref: string; viewAllButtonText: string }
 interface Props { section: SectionConfig; hotelData: HotelData }
@@ -35,8 +34,8 @@ export default function Amenities({ section, hotelData }: Props) {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         {featured.map((a) => (
           <div key={a.id} className="relative overflow-hidden radius-image" style={{ height: 360 }}>
-            {!DISABLE_IMAGES && a.images?.[0] && (
-              <Image
+            {a.images?.[0] && (
+              <SmartImage
                 src={cdnUrl(a.images[0])}
                 alt={a.name}
                 fill
@@ -44,7 +43,6 @@ export default function Amenities({ section, hotelData }: Props) {
                 sizes="(max-width:768px) 100vw, 25vw"
               />
             )}
-            {DISABLE_IMAGES && <div className="w-full h-full bg-gray-200" />}
             <div
               className="absolute bottom-4 left-4 right-4 px-4 py-3 radius-card-inner"
               style={{

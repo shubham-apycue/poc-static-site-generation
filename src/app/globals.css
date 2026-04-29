@@ -99,6 +99,19 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Perf testing: hide images when `html.noimg` is set */
+html.noimg img,
+html.noimg picture,
+html.noimg video {
+  display: none !important;
+}
+
 body {
   font-family: var(--font-sans, 'IBM Plex Sans', sans-serif);
   background-color: oklch(var(--background, 100% 0 0));

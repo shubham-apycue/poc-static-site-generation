@@ -1,8 +1,7 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import type { Contact, HeaderConfig, Hotel, Page } from '@/lib/data'
 import { cdnUrl } from '@/lib/images'
-import { DISABLE_IMAGES } from '@/lib/flags'
+import SmartImage from '@/components/media/SmartImage'
 
 interface Props {
   config: HeaderConfig
@@ -88,8 +87,8 @@ export default function Header({ config, hotel, pages, contact }: Props) {
           </details>
 
           <Link href="/" className="flex items-center gap-3">
-            {!DISABLE_IMAGES && hotel.logo?.light ? (
-              <Image
+            {hotel.logo?.light ? (
+              <SmartImage
                 src={cdnUrl(hotel.logo.light)}
                 alt={hotel.name}
                 width={140}

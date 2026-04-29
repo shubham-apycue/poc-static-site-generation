@@ -4,6 +4,7 @@ import { getWebsiteConfig, getHotelData } from '@/lib/data'
 import { generateThemeCSS } from '@/lib/theme'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import { imagesDisabled } from '@/lib/flags'
 
 export async function generateMetadata(): Promise<Metadata> {
   const config = getWebsiteConfig()
@@ -37,7 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   })
 
   return (
-    <html lang="en">
+    <html lang="en" className={imagesDisabled() ? 'noimg' : undefined}>
       <head>
         <link
           rel="preload"
