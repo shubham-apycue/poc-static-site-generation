@@ -3,7 +3,7 @@ import type { SectionConfig, HotelData } from '@/lib/data'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import { cdnUrl } from '@/lib/images'
 
-interface LAContent { mainHeading: string; sectionLabel: string; getDirectionButtonText: string }
+interface LAContent { mainHeading: string; sectionLabel: string }
 interface Props { section: SectionConfig; hotelData: HotelData }
 
 export default function LocalAttraction({ section, hotelData }: Props) {

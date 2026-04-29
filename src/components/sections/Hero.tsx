@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import type { SectionConfig, HotelData, CarouselImage, TrustItem } from '@/lib/data'
-import SectionWrapper from '@/components/ui/SectionWrapper'
 import { cdnUrl } from '@/lib/images'
 
 interface HeroContent {

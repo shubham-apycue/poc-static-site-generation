@@ -163,9 +163,8 @@ export interface Amenity {
 }
 
 export interface MealTiming {
-  label: string
-  startTime: string
-  endTime: string
+  openingTime: string
+  closingTime: string
 }
 
 export interface DiningVenue {
@@ -173,7 +172,7 @@ export interface DiningVenue {
   description: string
   shortDescription: string
   images: string[]
-  mealTimings: MealTiming[]
+  mealTimings: Record<string, MealTiming> | null
   category: string
   isFeatured: boolean
 }

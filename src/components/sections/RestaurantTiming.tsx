@@ -20,21 +20,23 @@ export default function RestaurantTiming({ section, hotelData }: Props) {
       {content.sectionLabel && <p className="text-xs uppercase tracking-widest opacity-60 mb-2">{content.sectionLabel}</p>}
       <h2 className="text-2xl font-bold mb-6">{content.title}</h2>
       <div className="space-y-6">
-        {hotelData.dining.map((d, i) => (
-          d.mealTimings?.length > 0 && (
+        {hotelData.dining.map((d, i) => {
+          const entries = d.mealTimings ? Object.entries(d.mealTimings) : []
+          if (!entries.length) return null
+          return (
             <div key={i} className="border border-gray-200 rounded-lg p-4">
               <h3 className="font-semibold mb-3">{d.name}</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                {d.mealTimings.map((t, j) => (
-                  <div key={j} className="text-sm">
-                    <p className="font-medium text-gray-500">{timingLabels[t.label] ?? t.label}</p>
-                    <p>{t.startTime} – {t.endTime}</p>
+                {entries.map(([key, t]) => (
+                  <div key={key} className="text-sm">
+                    <p className="font-medium text-gray-500">{timingLabels[key] ?? key}</p>
+                    <p>{t.openingTime} – {t.closingTime}</p>
                   </div>
                 ))}
               </div>
             </div>
           )
-        ))}
+        })}
       </div>
       {content.additionalNote && <p className="text-sm text-gray-500 mt-4 italic">{content.additionalNote}</p>}
     </SectionWrapper>
