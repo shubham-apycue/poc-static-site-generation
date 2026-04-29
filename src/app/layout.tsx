@@ -8,14 +8,14 @@ import Footer from '@/components/layout/Footer'
 
 const workSans = Work_Sans({
   subsets: ['latin'],
-  variable: '--font-heading',
+  variable: '--font-serif',
   display: 'swap',
 })
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
-  variable: '--font-body',
+  variable: '--font-sans',
   display: 'swap',
 })
 
@@ -45,7 +45,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const hotelData = getHotelData()
   const themeCSS = generateThemeCSS({
     colors: config.theme.colors,
-    typography: { fontFamily: (config.theme.typography as Record<string, unknown>) },
+    typography: config.theme.typography as never,
+    icons: config.theme.icons,
+    radius: config.theme.radius,
   })
 
   return (
@@ -53,7 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <style dangerouslySetInnerHTML={{ __html: themeCSS }} />
       </head>
-      <body className="bg-white text-gray-900">
+      <body>
         <Header config={config.header} hotel={hotelData.hotel} pages={config.pages} />
         <main>{children}</main>
         <Footer config={config.footer} hotel={hotelData.hotel} contact={hotelData.contact} pages={config.pages} />

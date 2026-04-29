@@ -14,7 +14,7 @@ export default function Faqs({ section, hotelData }: Props) {
     <SectionWrapper>
       {content.badgeText && (
         <span className="text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4 inline-block"
-          style={{ backgroundColor: 'oklch(var(--color-badgeBg,96% 0.047 92.6))' }}>
+          style={{ backgroundColor: 'oklch(var(--badge,96% 0.047 92.6))' }}>
           {content.badgeText}
         </span>
       )}
@@ -41,7 +41,7 @@ export default function Faqs({ section, hotelData }: Props) {
           <p className="text-sm text-gray-500 mb-4">{content.ctaSubtitle}</p>
           <Link href={content.ctaButtonHref}
             className="inline-block px-5 py-2 rounded text-sm font-semibold"
-            style={{ backgroundColor: 'oklch(var(--color-btnPrimary,80% 0.15 85))', color: 'oklch(var(--color-btnPrimaryForeground,20% 0 0))' }}>
+            style={{ backgroundColor: 'oklch(var(--btn-primary,80% 0.15 85))', color: 'oklch(var(--btn-primary-foreground,20% 0 0))' }}>
             {content.ctaButtonText}
           </Link>
         </div>

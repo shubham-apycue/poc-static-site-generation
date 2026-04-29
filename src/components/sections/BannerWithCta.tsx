@@ -18,8 +18,8 @@ export default function BannerWithCta({ section, hotelData }: Props) {
           rel="noopener noreferrer"
           className="inline-block rounded px-6 py-3 font-semibold text-sm"
           style={{
-            backgroundColor: 'oklch(var(--color-btnPrimary, 80% 0.15 85))',
-            color: 'oklch(var(--color-btnPrimaryForeground, 20% 0 0))',
+            backgroundColor: 'oklch(var(--btn-primary, 80% 0.15 85))',
+            color: 'oklch(var(--btn-primary-foreground, 20% 0 0))',
           }}
         >
           {content.bookNowButtonText}

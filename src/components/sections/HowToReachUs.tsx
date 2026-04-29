@@ -22,7 +22,7 @@ export default function HowToReachUs({ section, hotelData }: Props) {
           </div>
           <a href={mapsUrl} target="_blank" rel="noopener noreferrer"
             className="inline-block px-5 py-2 rounded text-sm font-semibold"
-            style={{ backgroundColor: 'oklch(var(--color-btnPrimary,80% 0.15 85))', color: 'oklch(var(--color-btnPrimaryForeground,20% 0 0))' }}>
+            style={{ backgroundColor: 'oklch(var(--btn-primary,80% 0.15 85))', color: 'oklch(var(--btn-primary-foreground,20% 0 0))' }}>
             {content.getDirectionsButtonText}
           </a>
         </div>

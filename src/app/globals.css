@@ -1,13 +1,84 @@
 @import "tailwindcss";
 
+/* Map raw OKLCH variables to Tailwind color utilities */
+@theme inline {
+  --color-background: oklch(var(--background, 100% 0 0));
+  --color-foreground: oklch(var(--foreground, 15% 0 0));
+  --color-card: oklch(var(--card, 100% 0 0));
+  --color-card-foreground: oklch(var(--card-foreground, 15% 0 0));
+  --color-primary: oklch(var(--primary, 62.15% 0.127 86.49));
+  --color-primary-foreground: oklch(var(--primary-foreground, 100% 0 0));
+  --color-secondary: oklch(var(--secondary, 62.15% 0.127 86.49));
+  --color-secondary-foreground: oklch(var(--secondary-foreground, 100% 0 0));
+  --color-muted: oklch(var(--muted, 98% 0.02 91));
+  --color-muted-foreground: oklch(var(--muted-foreground, 45% 0 0));
+  --color-accent: oklch(var(--accent, 26.5% 0.081 305));
+  --color-accent-foreground: oklch(var(--accent-foreground, 100% 0 0));
+  --color-border: oklch(var(--border, 90% 0 0));
+  --color-border-default: oklch(var(--border-default, 93% 0.086 92));
+  --color-input: oklch(var(--input, 100% 0 0));
+  --color-ring: oklch(var(--ring, 62.15% 0.127 86.49));
+  --color-btn-primary: oklch(var(--btn-primary, 62.15% 0.127 86.49));
+  --color-btn-primary-foreground: oklch(var(--btn-primary-foreground, 100% 0 0));
+  --color-btn-secondary: oklch(var(--btn-secondary, 100% 0 0));
+  --color-btn-secondary-foreground: oklch(var(--btn-secondary-foreground, 15% 0 0));
+  --color-layout-header: oklch(var(--layout-header-bg, 100% 0 0));
+  --color-layout-header-foreground: oklch(var(--layout-header-foreground, 15% 0 0));
+  --color-layout-footer: oklch(var(--layout-footer-bg, 15% 0 0));
+  --color-layout-footer-foreground: oklch(var(--layout-footer-foreground, 100% 0 0));
+  --color-link: oklch(var(--link, 62.15% 0.127 86.49));
+  --color-banner-cta: oklch(var(--banner-cta-bg, 46% 0.095 87));
+  --color-banner-cta-foreground: oklch(var(--banner-cta-foreground, 100% 0 0));
+
+  /* Font stacks */
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: var(--font-body);
+  font-family: var(--font-sans, 'IBM Plex Sans', sans-serif);
+  background-color: oklch(var(--background, 100% 0 0));
+  color: oklch(var(--foreground, 15% 0 0));
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
+  font-family: var(--font-serif, 'Work Sans', sans-serif);
 }
+
+/* Material Symbols Outlined — self-hosted to avoid external requests */
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 100 700;
+  src: url('/fonts/material-symbols-outlined.woff2') format('woff2');
+  font-display: swap;
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: var(--icon-md, 24px);
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings:
+    'FILL' var(--icon-variant, 0),
+    'wght' var(--icon-wght, 400),
+    'GRAD' var(--icon-grade, 0),
+    'opsz' var(--icon-opsz, 24);
+  font-feature-settings: 'liga';
+}
+
+.material-symbols-outlined.icon-xl { font-size: var(--icon-xl, 32px); }
+.material-symbols-outlined.icon-sm { font-size: var(--icon-sm, 18px); }

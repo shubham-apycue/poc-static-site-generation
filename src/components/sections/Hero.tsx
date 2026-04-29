@@ -37,8 +37,8 @@ export default function Hero({ section, hotelData }: Props) {
           rel="noopener noreferrer"
           className="inline-block rounded px-6 py-3 font-semibold text-sm"
           style={{
-            backgroundColor: 'oklch(var(--color-btnPrimary, 80% 0.15 85))',
-            color: 'oklch(var(--color-btnPrimaryForeground, 20% 0 0))',
+            backgroundColor: 'oklch(var(--btn-primary, 80% 0.15 85))',
+            color: 'oklch(var(--btn-primary-foreground, 20% 0 0))',
           }}
         >
           Book Now
@@ -47,12 +47,12 @@ export default function Hero({ section, hotelData }: Props) {
       {content.trustUspItems?.length > 0 && (
         <div
           className="relative z-10 w-full overflow-x-auto"
-          style={{ backgroundColor: 'oklch(var(--color-primary, 26.5% 0.081 305.68))' }}
+          style={{ backgroundColor: 'oklch(var(--primary, 26.5% 0.081 305.68))' }}
         >
           <div className="flex gap-6 px-6 py-3 min-w-max mx-auto">
             {content.trustUspItems.map((item, i) => (
               <div key={i} className="flex items-center gap-2 text-white text-sm whitespace-nowrap">
-                <span className="text-base" aria-hidden="true">{item.icon}</span>
+                <span className="material-symbols-outlined icon-sm" aria-hidden="true">{item.icon}</span>
                 <span>{item.text}</span>
               </div>
             ))}

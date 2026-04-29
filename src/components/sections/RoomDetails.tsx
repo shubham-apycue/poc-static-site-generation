@@ -42,7 +42,7 @@ export default function RoomDetails({ section, hotelData }: Props) {
           {room.description && <p className="text-gray-600 mb-6 leading-relaxed">{room.description}</p>}
           <a href={hotelData.hotel.bookingEngineUrl || '#'} target="_blank" rel="noopener noreferrer"
             className="inline-block rounded px-6 py-3 font-semibold text-sm"
-            style={{ backgroundColor: 'oklch(var(--color-btnPrimary,80% 0.15 85))', color: 'oklch(var(--color-btnPrimaryForeground,20% 0 0))' }}>
+            style={{ backgroundColor: 'oklch(var(--btn-primary,80% 0.15 85))', color: 'oklch(var(--btn-primary-foreground,20% 0 0))' }}>
             {content.bookNowButtonText}
           </a>
         </div>

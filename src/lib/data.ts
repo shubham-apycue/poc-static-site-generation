@@ -101,8 +101,8 @@ export interface WebsiteConfig {
   theme: {
     colors: Record<string, string>
     typography: Record<string, unknown>
-    icons?: string
-    radius?: Record<string, string>
+    icons?: Record<string, unknown>
+    radius?: Record<string, Record<string, string>>
   }
   header: HeaderConfig
   footer: FooterConfig

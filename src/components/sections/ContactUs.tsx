@@ -31,7 +31,7 @@ export default function ContactUs({ section, hotelData }: Props) {
             className="w-full border border-gray-300 rounded px-4 py-2 text-sm focus:outline-none" />
           <button type="button"
             className="w-full py-2 rounded text-sm font-semibold"
-            style={{ backgroundColor: 'oklch(var(--color-btnPrimary,80% 0.15 85))', color: 'oklch(var(--color-btnPrimaryForeground,20% 0 0))' }}>
+            style={{ backgroundColor: 'oklch(var(--btn-primary,80% 0.15 85))', color: 'oklch(var(--btn-primary-foreground,20% 0 0))' }}>
             {content.submitButtonText}
           </button>
         </div>

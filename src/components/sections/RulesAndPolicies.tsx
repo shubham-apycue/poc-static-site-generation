@@ -12,7 +12,7 @@ export default function RulesAndPolicies({ section, hotelData }: Props) {
     <SectionWrapper backGroundVariant="muted">
       {content.badge && (
         <span className="text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-6 inline-block"
-          style={{ backgroundColor: 'oklch(var(--color-badgeBg,96% 0.047 92.6))' }}>
+          style={{ backgroundColor: 'oklch(var(--badge,96% 0.047 92.6))' }}>
           {content.badge}
         </span>
       )}

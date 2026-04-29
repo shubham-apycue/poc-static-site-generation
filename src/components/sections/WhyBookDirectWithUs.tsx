@@ -20,7 +20,7 @@ export default function WhyBookDirectWithUs({ section, hotelData }: Props) {
         <div>
           {content.badge && (
             <span className="text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4 inline-block"
-              style={{ backgroundColor: 'oklch(var(--color-badgeBg,96% 0.047 92.6))', color: 'oklch(var(--color-badgeForeground,30% 0 0))' }}>
+              style={{ backgroundColor: 'oklch(var(--badge,96% 0.047 92.6))', color: 'oklch(var(--badge-foreground,30% 0 0))' }}>
               {content.badge}
             </span>
           )}
@@ -28,8 +28,8 @@ export default function WhyBookDirectWithUs({ section, hotelData }: Props) {
             {content.features?.map((f, i) => (
               <li key={i} className="flex gap-3">
                 <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5"
-                  style={{ backgroundColor: 'oklch(var(--color-primary,26.5% 0.081 305.68))', color: 'white' }}>
-                  <span className="text-sm" aria-hidden="true">{f.icon}</span>
+                  style={{ backgroundColor: 'oklch(var(--primary,26.5% 0.081 305.68))', color: 'white' }}>
+                  <span className="material-symbols-outlined icon-sm" aria-hidden="true">{f.icon}</span>
                 </div>
                 <div>
                   <p className="font-semibold text-sm">{f.title}</p>
@@ -40,7 +40,7 @@ export default function WhyBookDirectWithUs({ section, hotelData }: Props) {
           </ul>
           <a href={bookingUrl} target="_blank" rel="noopener noreferrer"
             className="mt-6 inline-block rounded px-5 py-2 text-sm font-semibold"
-            style={{ backgroundColor: 'oklch(var(--color-btnPrimary,80% 0.15 85))', color: 'oklch(var(--color-btnPrimaryForeground,20% 0 0))' }}>
+            style={{ backgroundColor: 'oklch(var(--btn-primary,80% 0.15 85))', color: 'oklch(var(--btn-primary-foreground,20% 0 0))' }}>
             Book Now
           </a>
         </div>

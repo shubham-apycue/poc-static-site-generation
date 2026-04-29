@@ -51,8 +51,8 @@ export default function Header({ config, hotel, pages }: Props) {
         rel="noopener noreferrer"
         className="rounded px-4 py-2 text-sm font-semibold transition-opacity hover:opacity-90"
         style={{
-          backgroundColor: 'oklch(var(--color-btnPrimary, 62.15% 0.127 86.49))',
-          color: 'oklch(var(--color-btnPrimaryForeground, 100% 0 0))',
+          backgroundColor: 'oklch(var(--btn-primary, 62.15% 0.127 86.49))',
+          color: 'oklch(var(--btn-primary-foreground, 100% 0 0))',
         }}
       >
         {config.content.bookNowButtonText}

@@ -13,7 +13,7 @@ export default function Reviews({ section, hotelData }: Props) {
       <div className="grid grid-cols-3 gap-6 mb-8">
         {content.highlightStats?.map((s, i) => (
           <div key={i} className="text-center">
-            <p className="text-3xl font-bold" style={{ color: 'oklch(var(--color-primary,26.5% 0.081 305.68))' }}>{s.value}</p>
+            <p className="text-3xl font-bold" style={{ color: 'oklch(var(--primary,26.5% 0.081 305.68))' }}>{s.value}</p>
             <p className="text-sm text-gray-500 mt-1">{s.label}</p>
           </div>
         ))}

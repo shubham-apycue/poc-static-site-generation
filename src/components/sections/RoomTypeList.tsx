@@ -33,7 +33,7 @@ export default function RoomTypeList({ section, hotelData }: Props) {
               )}
               {room.isBestSeller && (
                 <span className="absolute top-3 left-3 text-xs font-semibold px-2 py-1 rounded"
-                  style={{ backgroundColor: 'oklch(var(--color-btnPrimary,80% 0.15 85))', color: 'oklch(var(--color-btnPrimaryForeground,20% 0 0))' }}>
+                  style={{ backgroundColor: 'oklch(var(--btn-primary,80% 0.15 85))', color: 'oklch(var(--btn-primary-foreground,20% 0 0))' }}>
                   Best Seller
                 </span>
               )}
@@ -50,7 +50,7 @@ export default function RoomTypeList({ section, hotelData }: Props) {
                 </Link>
                 <a href={hotelData.hotel.bookingEngineUrl || '#'} target="_blank" rel="noopener noreferrer"
                   className="flex-1 text-center text-sm py-2 rounded font-semibold"
-                  style={{ backgroundColor: 'oklch(var(--color-btnPrimary,80% 0.15 85))', color: 'oklch(var(--color-btnPrimaryForeground,20% 0 0))' }}>
+                  style={{ backgroundColor: 'oklch(var(--btn-primary,80% 0.15 85))', color: 'oklch(var(--btn-primary-foreground,20% 0 0))' }}>
                   {content.bookNowButtonText}
                 </a>
               </div>
