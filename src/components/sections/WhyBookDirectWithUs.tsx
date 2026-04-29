@@ -2,6 +2,7 @@ import Image from 'next/image'
 import type { SectionConfig, HotelData, Feature } from '@/lib/data'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import { cdnUrl } from '@/lib/images'
+import { DISABLE_IMAGES } from '@/lib/flags'
 
 interface WBDContent { badge: string; image: string; features: Feature[] }
 interface Props { section: SectionConfig; hotelData: HotelData }
@@ -14,7 +15,11 @@ export default function WhyBookDirectWithUs({ section, hotelData }: Props) {
       <div className="grid md:grid-cols-2 gap-10 items-center">
         {content.image && (
           <div className="relative h-80 rounded-lg overflow-hidden">
-            <Image src={cdnUrl(content.image)} alt="Book direct" fill className="object-cover" sizes="(max-width:768px) 100vw,50vw" />
+            {!DISABLE_IMAGES ? (
+              <Image src={cdnUrl(content.image)} alt="Book direct" fill className="object-cover" sizes="(max-width:768px) 100vw,50vw" />
+            ) : (
+              <div className="w-full h-full bg-gray-200" />
+            )}
           </div>
         )}
         <div>

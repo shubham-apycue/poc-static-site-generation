@@ -2,6 +2,7 @@ import Image from 'next/image'
 import type { SectionConfig, HotelData } from '@/lib/data'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import { cdnUrl } from '@/lib/images'
+import { DISABLE_IMAGES } from '@/lib/flags'
 
 interface InstaContent { sectionTitle: string }
 interface Props { section: SectionConfig; hotelData: HotelData }
@@ -25,8 +26,12 @@ export default function InstagramFeed({ section, hotelData }: Props) {
         <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
           {posts.map((post, i) => (
             <div key={i} className="relative aspect-square rounded overflow-hidden">
-              <Image src={cdnUrl(post.imageUrl)} alt={`Instagram post ${i + 1}`} fill className="object-cover"
-                sizes="(max-width:768px) 33vw,16vw" />
+              {!DISABLE_IMAGES ? (
+                <Image src={cdnUrl(post.imageUrl)} alt={`Instagram post ${i + 1}`} fill className="object-cover"
+                  sizes="(max-width:768px) 33vw,16vw" />
+              ) : (
+                <div className="w-full h-full bg-gray-200" />
+              )}
             </div>
           ))}
         </div>

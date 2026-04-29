@@ -2,6 +2,7 @@ import Image from 'next/image'
 import type { SectionConfig, HotelData, CarouselImage } from '@/lib/data'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import { cdnUrl } from '@/lib/images'
+import { DISABLE_IMAGES } from '@/lib/flags'
 
 interface RDContent { images: CarouselImage[]; paragraphs: (string | { text: string })[]; mainHeading: string; sectionLabel: string }
 interface Props { section: SectionConfig; hotelData: HotelData }
@@ -20,8 +21,12 @@ export default function RestaurantDescription({ section }: Props) {
         </div>
         {content.images?.[0] && (
           <div className="relative h-80 rounded-lg overflow-hidden">
-            <Image src={cdnUrl(content.images[0].src)} alt={content.images[0].alt || content.mainHeading} fill className="object-cover"
-              sizes="(max-width:768px) 100vw,50vw" />
+            {!DISABLE_IMAGES ? (
+              <Image src={cdnUrl(content.images[0].src)} alt={content.images[0].alt || content.mainHeading} fill className="object-cover"
+                sizes="(max-width:768px) 100vw,50vw" />
+            ) : (
+              <div className="w-full h-full bg-gray-200" />
+            )}
           </div>
         )}
       </div>

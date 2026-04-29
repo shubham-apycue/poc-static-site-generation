@@ -7,6 +7,7 @@ import SectionWrapper from '@/components/ui/SectionWrapper'
 import { cdnUrl } from '@/lib/images'
 import { toSlug } from '@/lib/data'
 import { useMemo, useRef } from 'react'
+import { DISABLE_IMAGES } from '@/lib/flags'
 
 interface RoomTypeListContent {
   mainHeading: string; sectionTitle: string
@@ -89,7 +90,7 @@ export default function RoomTypeList({ section, hotelData }: Props) {
             }}
           >
             <div className="relative aspect-[4/3] overflow-hidden radius-image">
-              {room.images[0] ? (
+              {!DISABLE_IMAGES && room.images[0] ? (
                 <Image
                   src={cdnUrl(room.images[0])}
                   alt={room.name}

@@ -2,6 +2,7 @@ import Image from 'next/image'
 import type { SectionConfig, HotelData, Room } from '@/lib/data'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import { cdnUrl } from '@/lib/images'
+import { DISABLE_IMAGES } from '@/lib/flags'
 
 interface RoomDetailsContent {
   bookNowButtonText: string
@@ -21,15 +22,20 @@ export default function RoomDetails({ section, hotelData }: Props) {
     <SectionWrapper>
       <div className="grid md:grid-cols-2 gap-10">
         <div>
-          {mainImage && (
+          {mainImage && !DISABLE_IMAGES && (
             <div className="relative h-80 rounded-lg overflow-hidden mb-4">
               <Image src={cdnUrl(mainImage)} alt={room.name} fill className="object-cover" sizes="(max-width:768px) 100vw,50vw" priority />
             </div>
           )}
+          {DISABLE_IMAGES && <div className="h-80 rounded-lg bg-gray-200 mb-4" />}
           <div className="grid grid-cols-3 gap-2">
             {room.images.slice(1, 4).map((img, i) => (
               <div key={i} className="relative h-24 rounded overflow-hidden">
-                <Image src={cdnUrl(img)} alt={`${room.name} ${i + 2}`} fill className="object-cover" sizes="(max-width:768px) 33vw,16vw" />
+                {!DISABLE_IMAGES ? (
+                  <Image src={cdnUrl(img)} alt={`${room.name} ${i + 2}`} fill className="object-cover" sizes="(max-width:768px) 33vw,16vw" />
+                ) : (
+                  <div className="w-full h-full bg-gray-200" />
+                )}
               </div>
             ))}
           </div>

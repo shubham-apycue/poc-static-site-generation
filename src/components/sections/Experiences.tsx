@@ -2,6 +2,7 @@ import Image from 'next/image'
 import type { SectionConfig, HotelData } from '@/lib/data'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import { cdnUrl } from '@/lib/images'
+import { DISABLE_IMAGES } from '@/lib/flags'
 
 interface ExpContent { badge: string; mainHeading: string }
 interface Props { section: SectionConfig; hotelData: HotelData }
@@ -15,11 +16,12 @@ export default function Experiences({ section, hotelData }: Props) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {hotelData.experiences.map((exp, i) => (
           <article key={i} className="flex gap-4">
-            {exp.images[0] && (
+            {exp.images[0] && !DISABLE_IMAGES && (
               <div className="relative w-28 h-28 rounded-lg overflow-hidden shrink-0">
                 <Image src={cdnUrl(exp.images[0])} alt={exp.name} fill className="object-cover" sizes="112px" />
               </div>
             )}
+            {DISABLE_IMAGES && <div className="w-28 h-28 rounded-lg bg-gray-200 shrink-0" />}
             <div>
               <h3 className="font-semibold mb-1">{exp.name}</h3>
               <p className="text-sm text-gray-600 line-clamp-3">{exp.description}</p>

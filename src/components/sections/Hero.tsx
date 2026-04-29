@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import type { SectionConfig, HotelData, CarouselImage, TrustItem } from '@/lib/data'
 import { cdnUrl } from '@/lib/images'
+import { DISABLE_IMAGES } from '@/lib/flags'
 
 interface HeroContent {
   title: string
@@ -18,7 +19,7 @@ export default function Hero({ section, hotelData }: Props) {
 
   return (
     <section className="relative min-h-[80vh] flex flex-col justify-end overflow-hidden bg-gray-900">
-      {firstImage && (
+      {!DISABLE_IMAGES && firstImage && (
         <Image
           src={cdnUrl(firstImage.src)}
           alt={firstImage.alt}

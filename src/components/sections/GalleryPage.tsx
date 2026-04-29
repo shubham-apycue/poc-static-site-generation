@@ -2,6 +2,7 @@ import Image from 'next/image'
 import type { SectionConfig, HotelData } from '@/lib/data'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import { cdnUrl } from '@/lib/images'
+import { DISABLE_IMAGES } from '@/lib/flags'
 
 interface Props { section: SectionConfig; hotelData: HotelData }
 
@@ -17,8 +18,12 @@ export default function GalleryPage({ hotelData }: Props) {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
               {imgs.map((img, i) => (
                 <div key={i} className="relative h-48 rounded overflow-hidden">
-                  <Image src={cdnUrl(img.url)} alt={img.title || cat} fill className="object-cover"
-                    sizes="(max-width:768px) 50vw,(max-width:1024px) 33vw,25vw" />
+                  {!DISABLE_IMAGES ? (
+                    <Image src={cdnUrl(img.url)} alt={img.title || cat} fill className="object-cover"
+                      sizes="(max-width:768px) 50vw,(max-width:1024px) 33vw,25vw" />
+                  ) : (
+                    <div className="w-full h-full bg-gray-200" />
+                  )}
                 </div>
               ))}
             </div>

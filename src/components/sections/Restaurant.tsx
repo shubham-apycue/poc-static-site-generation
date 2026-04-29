@@ -2,6 +2,7 @@ import Image from 'next/image'
 import type { SectionConfig, HotelData } from '@/lib/data'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import { cdnUrl } from '@/lib/images'
+import { DISABLE_IMAGES } from '@/lib/flags'
 
 interface RestaurantContent { mainHeading: string; sectionLabel: string }
 interface Props { section: SectionConfig; hotelData: HotelData }
@@ -15,12 +16,13 @@ export default function Restaurant({ section, hotelData }: Props) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {hotelData.dining.map((d, i) => (
           <article key={i} className="border border-gray-200 rounded-lg overflow-hidden">
-            {d.images[0] && (
+            {d.images[0] && !DISABLE_IMAGES && (
               <div className="relative h-52">
                 <Image src={cdnUrl(d.images[0])} alt={d.name} fill className="object-cover"
                   sizes="(max-width:768px) 100vw,50vw" />
               </div>
             )}
+            {DISABLE_IMAGES && <div className="h-52 bg-gray-200" />}
             <div className="p-4">
               <span className="text-xs font-semibold uppercase tracking-widest opacity-60">{d.category}</span>
               <h3 className="font-semibold text-lg mt-1 mb-2">{d.name}</h3>

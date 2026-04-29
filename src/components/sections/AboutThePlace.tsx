@@ -2,6 +2,7 @@ import Image from 'next/image'
 import type { SectionConfig, HotelData } from '@/lib/data'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import { cdnUrl } from '@/lib/images'
+import { DISABLE_IMAGES } from '@/lib/flags'
 
 interface AboutPlaceContent {
   images: string[]; imageAlt: string; paragraphs: string[]
@@ -24,8 +25,12 @@ export default function AboutThePlace({ section }: Props) {
         </div>
         {img && (
           <div className="relative h-80 rounded-lg overflow-hidden">
-            <Image src={cdnUrl(img)} alt={content.imageAlt || 'Place'} fill className="object-cover"
-              sizes="(max-width:768px) 100vw,50vw" />
+            {!DISABLE_IMAGES ? (
+              <Image src={cdnUrl(img)} alt={content.imageAlt || 'Place'} fill className="object-cover"
+                sizes="(max-width:768px) 100vw,50vw" />
+            ) : (
+              <div className="w-full h-full bg-gray-200" />
+            )}
           </div>
         )}
       </div>

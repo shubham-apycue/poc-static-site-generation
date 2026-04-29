@@ -2,6 +2,7 @@ import Image from 'next/image'
 import type { SectionConfig, HotelData } from '@/lib/data'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import { cdnUrl } from '@/lib/images'
+import { DISABLE_IMAGES } from '@/lib/flags'
 
 interface FEContent { badge: string; title: string }
 interface Props { section: SectionConfig; hotelData: HotelData }
@@ -16,12 +17,13 @@ export default function FeaturedExperiences({ section, hotelData }: Props) {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {featured.map((exp, i) => (
           <article key={i} className="rounded-lg overflow-hidden border border-gray-200">
-            {exp.images[0] && (
+            {exp.images[0] && !DISABLE_IMAGES && (
               <div className="relative h-48">
                 <Image src={cdnUrl(exp.images[0])} alt={exp.name} fill className="object-cover"
                   sizes="(max-width:768px) 100vw,(max-width:1024px) 50vw,33vw" />
               </div>
             )}
+            {DISABLE_IMAGES && <div className="h-48 bg-gray-200" />}
             <div className="p-4">
               <h3 className="font-semibold mb-2">{exp.name}</h3>
               <p className="text-sm text-gray-600 line-clamp-2">{exp.shortDescription}</p>

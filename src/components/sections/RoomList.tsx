@@ -4,6 +4,7 @@ import type { SectionConfig, HotelData } from '@/lib/data'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import { cdnUrl } from '@/lib/images'
 import { toSlug } from '@/lib/data'
+import { DISABLE_IMAGES } from '@/lib/flags'
 
 interface RoomListContent { bookNowButtonText: string; viewMoreButtonText: string }
 interface Props { section: SectionConfig; hotelData: HotelData }
@@ -16,7 +17,7 @@ export default function RoomList({ section, hotelData }: Props) {
         {hotelData.rooms.map((room) => (
           <article key={room.id} className="rounded-lg overflow-hidden border border-gray-200 bg-white shadow-sm">
             <div className="relative h-52">
-              {room.images[0] ? (
+              {!DISABLE_IMAGES && room.images[0] ? (
                 <Image src={cdnUrl(room.images[0])} alt={room.name} fill className="object-cover"
                   sizes="(max-width:768px) 100vw,(max-width:1024px) 50vw,33vw" />
               ) : (

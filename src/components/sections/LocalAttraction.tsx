@@ -2,6 +2,7 @@ import Image from 'next/image'
 import type { SectionConfig, HotelData } from '@/lib/data'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import { cdnUrl } from '@/lib/images'
+import { DISABLE_IMAGES } from '@/lib/flags'
 
 interface LAContent { mainHeading: string; sectionLabel: string }
 interface Props { section: SectionConfig; hotelData: HotelData }
@@ -16,12 +17,13 @@ export default function LocalAttraction({ section, hotelData }: Props) {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {places.map((place, i) => (
           <article key={i} className="border border-gray-200 rounded-lg overflow-hidden">
-            {place.imageUrl && (
+            {place.imageUrl && !DISABLE_IMAGES && (
               <div className="relative h-44">
                 <Image src={cdnUrl(place.imageUrl)} alt={place.name} fill className="object-cover"
                   sizes="(max-width:768px) 100vw,(max-width:1024px) 50vw,33vw" />
               </div>
             )}
+            {DISABLE_IMAGES && <div className="h-44 bg-gray-200" />}
             <div className="p-4">
               <span className="text-xs font-semibold uppercase tracking-widest opacity-60">{place.category}</span>
               <h3 className="font-semibold mt-1 mb-1">{place.name}</h3>
