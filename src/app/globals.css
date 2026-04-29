@@ -1,11 +1,18 @@
 @import "tailwindcss";
 
-/* Map raw OKLCH variables to Tailwind color utilities */
+/* Theme tokens (aligned with `apycue-repo` naming) */
 @theme inline {
+  /* Core colors */
   --color-background: oklch(var(--background, 100% 0 0));
   --color-foreground: oklch(var(--foreground, 15% 0 0));
   --color-card: oklch(var(--card, 100% 0 0));
   --color-card-foreground: oklch(var(--card-foreground, 15% 0 0));
+  --color-card-secondary: oklch(var(--card-secondary, var(--card, 100% 0 0)));
+  --color-card-secondary-foreground: oklch(var(--card-secondary-foreground, var(--card-foreground, 15% 0 0)));
+  --color-card-accent: oklch(var(--card-accent, var(--card, 100% 0 0)));
+  --color-card-accent-foreground: oklch(var(--card-accent-foreground, var(--card-foreground, 15% 0 0)));
+  --color-popover: oklch(var(--popover, 100% 0 0));
+  --color-popover-foreground: oklch(var(--popover-foreground, 15% 0 0));
   --color-primary: oklch(var(--primary, 62.15% 0.127 86.49));
   --color-primary-foreground: oklch(var(--primary-foreground, 100% 0 0));
   --color-secondary: oklch(var(--secondary, 62.15% 0.127 86.49));
@@ -14,20 +21,72 @@
   --color-muted-foreground: oklch(var(--muted-foreground, 45% 0 0));
   --color-accent: oklch(var(--accent, 26.5% 0.081 305));
   --color-accent-foreground: oklch(var(--accent-foreground, 100% 0 0));
+  --color-destructive: oklch(var(--destructive, 62% 0.2 25));
+  --color-destructive-foreground: oklch(var(--destructive-foreground, 100% 0 0));
+  --color-accent-line: oklch(var(--accent-line, var(--accent, 26.5% 0.081 305)));
   --color-border: oklch(var(--border, 90% 0 0));
-  --color-border-default: oklch(var(--border-default, 93% 0.086 92));
+  --color-border-default: oklch(var(--border-default, var(--border, 90% 0 0)));
+  --color-border-accent: oklch(var(--border-accent, var(--border-default, var(--border, 90% 0 0))));
+  --color-surface-accent: oklch(var(--surface-accent, var(--accent, 26.5% 0.081 305)));
+  --color-surface-accent-foreground: oklch(var(--surface-accent-foreground, var(--accent-foreground, 100% 0 0)));
   --color-input: oklch(var(--input, 100% 0 0));
-  --color-ring: oklch(var(--ring, 62.15% 0.127 86.49));
+  --color-input-border: oklch(var(--input-border, var(--border, 90% 0 0)));
+  --color-input-foreground: oklch(var(--input-foreground, var(--foreground, 15% 0 0)));
+  --color-ring: oklch(var(--ring, var(--primary, 62.15% 0.127 86.49)));
+
+  /* Layout */
+  --color-layout-header: oklch(var(--layout-header, var(--layout-header-bg, 100% 0 0)));
+  --color-layout-header-foreground: oklch(var(--layout-header-foreground, 15% 0 0));
+  --color-layout-footer: oklch(var(--layout-footer, var(--layout-footer-bg, 15% 0 0)));
+  --color-layout-footer-foreground: oklch(var(--layout-footer-foreground, 100% 0 0));
+  --color-link: oklch(var(--link, 62.15% 0.127 86.49));
+  --color-overlay: oklch(var(--overlay, var(--bg-overlay, 0% 0 0 / 50%)));
+
+  /* Buttons */
   --color-btn-primary: oklch(var(--btn-primary, 62.15% 0.127 86.49));
   --color-btn-primary-foreground: oklch(var(--btn-primary-foreground, 100% 0 0));
   --color-btn-secondary: oklch(var(--btn-secondary, 100% 0 0));
   --color-btn-secondary-foreground: oklch(var(--btn-secondary-foreground, 15% 0 0));
-  --color-layout-header: oklch(var(--layout-header-bg, 100% 0 0));
-  --color-layout-header-foreground: oklch(var(--layout-header-foreground, 15% 0 0));
-  --color-layout-footer: oklch(var(--layout-footer-bg, 15% 0 0));
-  --color-layout-footer-foreground: oklch(var(--layout-footer-foreground, 100% 0 0));
-  --color-link: oklch(var(--link, 62.15% 0.127 86.49));
-  --color-banner-cta: oklch(var(--banner-cta-bg, 46% 0.095 87));
+
+  /* Status */
+  --color-status-success: oklch(var(--status-success, 65% 0.18 145));
+  --color-status-error: oklch(var(--status-error, 60% 0.22 25));
+  --color-status-info: oklch(var(--status-info, 65% 0.16 250));
+  --color-status-warning: oklch(var(--status-warning, 80% 0.16 85));
+
+  /* Notifications */
+  --color-notification-success: oklch(var(--notification-success, var(--status-success, 65% 0.18 145)));
+  --color-notification-success-foreground: oklch(var(--notification-success-foreground, 100% 0 0));
+  --color-notification-error: oklch(var(--notification-error, var(--status-error, 60% 0.22 25)));
+  --color-notification-error-foreground: oklch(var(--notification-error-foreground, 100% 0 0));
+  --color-notification-info: oklch(var(--notification-info, var(--status-info, 65% 0.16 250)));
+  --color-notification-info-foreground: oklch(var(--notification-info-foreground, 100% 0 0));
+  --color-notification-warning: oklch(var(--notification-warning, var(--status-warning, 80% 0.16 85)));
+  --color-notification-warning-foreground: oklch(var(--notification-warning-foreground, 15% 0 0));
+
+  /* Tabs */
+  --color-tab-inactive: oklch(var(--tab-inactive, var(--card, 100% 0 0)));
+  --color-tab-inactive-border: oklch(var(--tab-inactive-border, var(--border, 90% 0 0)));
+  --color-tab-inactive-foreground: oklch(var(--tab-inactive-foreground, var(--foreground, 15% 0 0)));
+  --color-tab-active: oklch(var(--tab-active, var(--card, 100% 0 0)));
+  --color-tab-active-border: oklch(var(--tab-active-border, var(--border-default, var(--border, 90% 0 0))));
+  --color-tab-active-foreground: oklch(var(--tab-active-foreground, var(--foreground, 15% 0 0)));
+
+  /* Badges */
+  --color-badge: oklch(var(--badge, var(--badge-bg, var(--card, 100% 0 0))));
+  --color-badge-foreground: oklch(var(--badge-foreground, var(--foreground, 15% 0 0)));
+  --color-badge-bullet: oklch(var(--badge-bullet, var(--badge-bullet-bg, var(--badge, var(--card, 100% 0 0)))));
+  --color-badge-bullet-foreground: oklch(var(--badge-bullet-foreground, 100% 0 0));
+  --color-badge-bullet-secondary: oklch(var(--badge-bullet-secondary, var(--badge-bullet-secondary-bg, var(--badge, var(--card, 100% 0 0)))));
+  --color-badge-bullet-secondary-foreground: oklch(var(--badge-bullet-secondary-foreground, 100% 0 0));
+  --color-image-badge-primary: oklch(var(--image-badge-primary, var(--primary, 62.15% 0.127 86.49)));
+  --color-image-badge-primary-foreground: oklch(var(--image-badge-primary-foreground, 100% 0 0));
+  --color-image-badge-secondary: oklch(var(--image-badge-secondary, var(--secondary, 62.15% 0.127 86.49)));
+  --color-image-badge-secondary-foreground: oklch(var(--image-badge-secondary-foreground, 100% 0 0));
+
+  /* Banner with CTA */
+  --color-banner-cta: oklch(var(--banner-cta, var(--banner-cta-bg, 46% 0.095 87)));
+  --color-banner-cta-border: oklch(var(--banner-cta-border, var(--border-default, var(--border, 90% 0 0))));
   --color-banner-cta-foreground: oklch(var(--banner-cta-foreground, 100% 0 0));
 
   /* Font stacks */

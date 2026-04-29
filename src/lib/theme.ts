@@ -38,7 +38,21 @@ export function generateThemeCSS(theme: ThemeInput): string {
 
   // Colors — raw OKLCH values (production pattern: --primary, --background, etc.)
   for (const [key, value] of Object.entries(theme.colors)) {
-    if (value) lines.push(`  --${toKebab(key)}: ${value};`)
+    if (!value) continue
+    const kebabKey = toKebab(key)
+    lines.push(`  --${kebabKey}: ${value};`)
+
+    // Compatibility aliases to match `apycue-repo` token naming.
+    // Example: `layoutHeaderBg` becomes both `--layout-header-bg` and `--layout-header`.
+    if (key.endsWith('Bg')) {
+      const aliasKey = toKebab(key.slice(0, -2))
+      lines.push(`  --${aliasKey}: ${value};`)
+    }
+
+    // `bgOverlay` is used as `--overlay` in `apycue-repo`.
+    if (key === 'bgOverlay') {
+      lines.push(`  --overlay: ${value};`)
+    }
   }
 
   const t = theme.typography
