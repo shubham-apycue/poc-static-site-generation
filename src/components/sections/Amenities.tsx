@@ -1,35 +1,60 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import type { SectionConfig, HotelData } from '@/lib/data'
 import SectionWrapper from '@/components/ui/SectionWrapper'
+import { cdnUrl } from '@/lib/images'
 
 interface AmenitiesContent { badge: string; mainHeading: string; viewAllButtonHref: string; viewAllButtonText: string }
 interface Props { section: SectionConfig; hotelData: HotelData }
 
 export default function Amenities({ section, hotelData }: Props) {
   const content = section.content as unknown as AmenitiesContent
-  const featured = hotelData.amenities.filter((a) => a.isFeatured).slice(0, 8)
+  const featured = hotelData.amenities.filter((a) => a.isFeatured).slice(0, 4)
   return (
-    <SectionWrapper backGroundVariant="muted">
-      <div className="text-center mb-8">
-        {content.badge && <span className="text-xs font-semibold uppercase tracking-widest opacity-60 block mb-2">{content.badge}</span>}
-        <h2 className="text-3xl font-bold">{content.mainHeading}</h2>
+    <SectionWrapper>
+      <div className="mb-8 flex items-start justify-between gap-6">
+        <div>
+          {content.badge && (
+            <span
+              className="inline-block text-xs font-semibold uppercase tracking-widest px-3 py-1 mb-3"
+              style={{ backgroundColor: 'oklch(var(--badge, 96% 0.047 92.6))' }}
+            >
+              {content.badge}
+            </span>
+          )}
+          <h2 className="text-4xl font-bold">{content.mainHeading}</h2>
+        </div>
+        {content.viewAllButtonHref && (
+          <Link href={content.viewAllButtonHref} className="text-sm underline underline-offset-4">
+            {content.viewAllButtonText}
+          </Link>
+        )}
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         {featured.map((a) => (
-          <div key={a.id} className="bg-white rounded-lg p-4 text-center shadow-sm">
-            <p className="text-2xl mb-2" aria-hidden="true">{a.icon || '✓'}</p>
-            <p className="text-sm font-medium">{a.name}</p>
+          <div key={a.id} className="relative overflow-hidden radius-image" style={{ height: 360 }}>
+            {a.images?.[0] && (
+              <Image
+                src={cdnUrl(a.images[0])}
+                alt={a.name}
+                fill
+                className="object-cover"
+                sizes="(max-width:768px) 100vw, 25vw"
+              />
+            )}
+            <div
+              className="absolute bottom-4 left-4 right-4 px-4 py-3 radius-card-inner"
+              style={{
+                backgroundColor: 'oklch(var(--card, 100% 0 0) / 0.92)',
+                color: 'oklch(var(--card-foreground, 15% 0 0))',
+              }}
+            >
+              <p className="text-sm font-semibold">{a.name}</p>
+            </div>
           </div>
         ))}
       </div>
-      {content.viewAllButtonHref && (
-        <div className="text-center mt-8">
-          <Link href={content.viewAllButtonHref}
-            className="inline-block px-6 py-2 rounded border border-gray-300 text-sm hover:bg-gray-50">
-            {content.viewAllButtonText}
-          </Link>
-        </div>
-      )}
     </SectionWrapper>
   )
 }

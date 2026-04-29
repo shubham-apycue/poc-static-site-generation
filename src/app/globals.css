@@ -180,6 +180,14 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1 !important;
 }
 
+/* Hide scrollbars for horizontal carousels */
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* Self-hosted text fonts (copied from `apycue-repo` build output) */
 @font-face {
   font-family: 'Work Sans';

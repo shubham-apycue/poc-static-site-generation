@@ -35,23 +35,30 @@ export default function Hero({ section, hotelData }: Props) {
           href={bookingUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block rounded px-6 py-3 font-semibold text-sm"
+          className="inline-flex items-center gap-2 rounded px-8 py-3 font-semibold text-sm border"
           style={{
-            backgroundColor: 'oklch(var(--btn-primary, 80% 0.15 85))',
-            color: 'oklch(var(--btn-primary-foreground, 20% 0 0))',
+            backgroundColor: 'oklch(var(--btn-secondary, 100% 0 0))',
+            color: 'oklch(var(--btn-primary, 62.15% 0.127 86.49))',
+            borderColor: 'oklch(var(--btn-primary, 62.15% 0.127 86.49))',
           }}
         >
-          Book Now
+          Book Your Stay
+          <span className="material-symbols-outlined icon-sm" aria-hidden="true">
+            arrow_forward
+          </span>
         </a>
       </div>
       {content.trustUspItems?.length > 0 && (
         <div
-          className="relative z-10 w-full overflow-x-auto"
-          style={{ backgroundColor: 'oklch(var(--primary, 26.5% 0.081 305.68))' }}
+          className="relative z-10 w-full overflow-x-auto hide-scrollbar"
+          style={{
+            backgroundColor: 'oklch(var(--card-accent, 26.5% 0.081 305.68))',
+            color: 'oklch(var(--card-accent-foreground, 100% 0 0))',
+          }}
         >
           <div className="flex gap-6 px-6 py-3 min-w-max mx-auto">
             {content.trustUspItems.map((item, i) => (
-              <div key={i} className="flex items-center gap-2 text-white text-sm whitespace-nowrap">
+              <div key={i} className="flex items-center gap-2 text-sm whitespace-nowrap">
                 <span className="material-symbols-outlined icon-sm" aria-hidden="true">
                   {String(item.icon || '').trim().toLowerCase()}
                 </span>
