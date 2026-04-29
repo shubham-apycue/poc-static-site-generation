@@ -214,7 +214,7 @@ export interface PlatformRating {
   rating: number
   ratingOutOf: number
   value: string
-  label: string
+  label: string | Record<string, string>
 }
 
 export interface HotelImage {
