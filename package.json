@@ -10,11 +10,6 @@
     "test": "vitest run",
     "test:watch": "vitest"
   },
-  "vitest": {
-    "environment": "jsdom",
-    "setupFiles": ["./src/__tests__/setup.ts"],
-    "globals": true
-  },
   "dependencies": {
     "next": "15.5.15",
     "react": "19.1.0",
